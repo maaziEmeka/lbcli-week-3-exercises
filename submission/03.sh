@@ -5,8 +5,8 @@ TRANSACTION="02000000000104b5f641e80e9065f09b12f3e373072518885d1bd1ddd9298e5b984
 
 REQUIRED_SIGNATURES=1
 
-MULTISIG_PUBKEYS=$(bitcoin-cli decoderawtransaction  $TRANSACTION  | jq '[.vin.[].txinwitness.[1]]' )
+MULTISIG_PUBKEYS=$(bitcoin-cli -regtest decoderawtransaction  $TRANSACTION  | jq '[.vin.[].txinwitness.[1]]' )
 
-MULTISIG_ADDRESS=$(bitcoin-cli createmultisig $REQUIRED_SIGNATURES "$MULTISIG_PUBKEYS" |  jq -r .address)
+MULTISIG_ADDRESS=$(bitcoin-cli -regtest createmultisig $REQUIRED_SIGNATURES "$MULTISIG_PUBKEYS" |  jq -r .address)
 
 echo "$MULTISIG_ADDRESS"

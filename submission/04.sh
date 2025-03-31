@@ -8,6 +8,6 @@
 
  REQUIRED_SIGNATURES=2
 
-MULTISIG_ADDRESS=$(bitcoin-cli createmultisig $REQUIRED_SIGNATURES "$MULTISIG_PUBKEYS" |  jq -r .address)
+MULTISIG_ADDRESS=$(bitcoin-cli -regtest createmultisig $REQUIRED_SIGNATURES "$MULTISIG_PUBKEYS" |  jq -r .address)
 
 echo "$MULTISIG_ADDRESS"
